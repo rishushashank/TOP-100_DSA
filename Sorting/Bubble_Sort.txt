@@ -1,0 +1,125 @@
+What is Bubble Sort in Java?
+Bubble Sort is the elementary sorting algorithm for sorting various data structures. It is a comparison-based sorting algorithm in which each element is compared with the next element, and is swapped if those elements are not in the correct order.
+
+The algorithm starts with comparing the first pair of elements.
+If the first element is smaller than the second element, then the elements are swapped
+This algorithm is not suitable for large data sets.
+
+
+Time Complexity	O(n2)
+Best Case	O(n)
+Worst Case	O(n2)
+Space Complexity	O(1)
+Avg. Comparisons	n(n-1)/2
+
+
+
+>>> Bubble Sort (Method 1)
+// Time Complexity : O(N^2)
+// Space Complexity : O(1)
+class Main
+{
+    static void bubbleSort(int a[])
+    {
+        int len = a.length; // calculating the length of array
+        for (int i = 0; i < len-1; i++)
+            for (int j = 0; j < len-i-1; j++) 
+                if (a[j] > a[j+1]) //comparing the pair of elements
+                {
+                    // swapping a[j+1] and a[i]
+                    int temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
+                }
+    }
+
+    /* Prints the array */
+    static void printArray(int a[])
+    {
+        int len = a.length;
+        for (int i = 0; i < len; i++)
+            System.out.print(a[i] + " "); //printing the sorted array
+
+        System.out.println();
+    }
+
+    // Main method to test above
+    public static void main(String args[])
+    {
+        int arr[] = {64, 34, 25, 12, 22, 11, 90};
+
+        bubbleSort(arr);//calling the bubbleSort function
+
+        System.out.println("Sorted array");
+
+        printArray(arr); //calling the printArray function
+    }
+}
+
+gfg code: https://ide.geeksforgeeks.org/online-java-compiler/55670474-af20-423b-84f1-31050ba257bc
+
+
+
+
+
+
+
+
+
+>>>Bubble Sort Method 2 (Optimized)
+// Time Complexity : O(N^2)
+// Space Complexity : O(1)
+class Main
+{
+    static void bubbleSort(int a[])
+    {
+        int len = a.length; // calculating the length of array
+        for (int i = 0; i < len-1; i++) {
+
+            // for optimization when array is already sorted & no swapping happens
+            boolean swapped = false;
+            for (int j = 0; j < len - i - 1; j++) 
+            { 
+                if (a[j] > a[j + 1]) //comparing the pair of elements
+                {
+                    // swapping a[j+1] and a[i]
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                    // swapping happened so change to true
+                    swapped = true;
+                }
+            }
+
+            // if no swaps happened in any of the iteration
+            // array has become sorted so stop with the passes
+            if(swapped == false)
+                break;
+
+        }
+    }
+
+    /* Prints the array */
+    static void printArray(int a[])
+    {
+        int len = a.length;
+        for (int i = 0; i < len; i++)
+            System.out.print(a[i] + " "); //printing the sorted array
+
+        System.out.println();
+    }
+
+    // Main method to test above
+    public static void main(String args[])
+    {
+        int arr[] = {1, 2, 3, 4, 5, 6, 7};
+
+        bubbleSort(arr);//calling the bubbleSort function
+
+        System.out.println("Sorted array");
+
+        printArray(arr); //calling the printArray function
+    }
+}
+
+gfg code:https://ide.geeksforgeeks.org/online-java-compiler/b37492c9-0411-4d5f-8988-eefb6c38a1bb
